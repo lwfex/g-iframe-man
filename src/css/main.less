@@ -1,0 +1,89 @@
+.g-iframe-man {
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
+  }
+  position: relative;
+  height: 100%;
+  padding-top: 42px;
+  //标签栏
+  .gim-tab-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    border-bottom: 2px solid #2f4050;
+    overflow: hidden;
+    font-size: 13px;
+    //标签页
+    .gim-tab-container {
+      transition: margin-top 0.3s;
+      a {
+        display: inline-block;
+        padding: 0 15px;
+        border: 1px solid #dedede;
+        border-width: 0 1px 0 1px;
+        + a {
+          margin-left: -1px;
+        }
+        &.active {
+          background: #2f4050;
+          color: #e2e2e2;
+        }
+      }
+    }
+    //左边工具栏
+    .gim-tool-bar-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      > div {
+        display: inline-block;
+        float: left;
+        padding: 0 15px;
+        border: 1px solid #dedede;
+        border-width: 0 1px 0 1px;
+        cursor: pointer;
+        + div {
+          margin-left: -1px;
+        }
+      }
+      .gim-tab-roll {
+        padding: 0;
+        .gim-prev, .gim-next {
+          display: block;
+          height: 20px;
+          line-height: 20px;
+          padding: 0 6px;
+          &:hover {
+            background: #d6d6d6;
+          }
+        }
+        .gim-prev {
+
+        }
+        .gim-next {
+
+        }
+      }
+      //刷新页面按钮
+      .gim-btn-refresh {
+      }
+    }
+  }
+  //窗口
+  .gim-windows {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    iframe {
+      position: absolute;
+      visibility: hidden;
+      &.active {
+        visibility: visible;
+      }
+    }
+  }
+}

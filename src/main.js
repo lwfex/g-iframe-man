@@ -55,20 +55,42 @@ module.exports = function (options) {
         if ($item.prev().length) {
             var prevId = $item.prev().data('id');
             $item.prev().addClass('active');
-            _this.$windowContainer.children('iframe[data-id="' + prevId + '"]').show();
+            _this.$windowContainer.children('iframe[data-id="' + prevId + '"]').addClass('active');
         } else if ($item.next().length) {
             var nextId = $item.next().data('id');
             $item.next().addClass('active');
-            _this.$windowContainer.children('iframe[data-id="' + nextId + '"]').show();
+            _this.$windowContainer.children('iframe[data-id="' + nextId + '"]').addClass('active');
         }
         $item.remove();
         $frame.remove();
         delete __idMap[url];
     };
 
+    //点击激活
+    _this.$html.on('click', '.gim-tab-container>a:not(".active")', function () {
+        var $item = $(this);
+        _this.$tabContainer.children().removeClass('active');
+        _this.$windowContainer.children().removeClass('active');
+        $item.addClass('active');
+        _this.$windowContainer.children('iframe[data-id="' + $item.data('id') + '"]').addClass('active');
+    });
+
     //点击关闭窗口
     _this.$html.on('click', '.gim-tab-container>a>i', function () {
         _this.closeByTab($(this).parent());
+        return false;
+    });
+
+    //显示上一个任务栏
+    _this.$html.on('click', '.gim-prev', function () {
+        var old = _this.$tabContainer.css("margin-top").replace(/^(-?\d+)$/, '$1');
+        _this.$tabContainer.css("margin-top", 40 + parseInt(old));
+    });
+
+    //显示下一个任务栏
+    _this.$html.on('click', '.gim-next', function () {
+        var old = _this.$tabContainer.css("margin-top").replace(/^(-?\d+)$/, '$1');
+        _this.$tabContainer.css("margin-top", -40 + parseInt(old));
     });
 
     //点击刷新当前页面
@@ -77,5 +99,7 @@ module.exports = function (options) {
         if ($frame.length) {
             $frame.attr('src', $frame.attr('src'));
         }
-    })
+    });
+
+    _this.$tabContainer.css('padding-right', _this.$html.find('.gim-tool-bar-right').width());
 };
