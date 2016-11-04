@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <title>g-iframe-man 标签页风格的后台窗口管理器</title>
     <link href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.css" rel="stylesheet"/>
+    <link href="../dist/g-iframe-man.css" rel="stylesheet"/>
     <style>
+        html, body, .container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
         .menu {
             width: 200px;
             float: left;
@@ -17,17 +24,26 @@
 </head>
 <body>
 <ul class="menu">
-    <li><a href="http://baidu.com/?a=1">百度1</a></li>
-    <li><a href="http://baidu.com/?a=2">百度2</a></li>
-    <li><a href="http://baidu.com/?a=3">百度3</a></li>
-    <li><a href="http://baidu.com/?a=4">百度4</a></li>
-    <li><a href="http://baidu.com/?a=5">百度5</a></li>
+    <li><a href="http://baidu.com/?a=1">标签1标签1标签1标签</a></li>
+    <li><a href="http://baidu.com/?a=2">标签标签2标签</a></li>
+    <li><a href="http://baidu.com/?a=3">标签3标签</a></li>
+    <li><a href="http://baidu.com/?a=4">标签标签度4</a></li>
+    <li><a href="http://baidu.com/?a=5">标签5标签</a></li>
+    <li><a href="http://baidu.com/?a=6">标签3标签3标签标签</a></li>
+    <li><a href="http://baidu.com/?a=7">标签标签4</a></li>
+    <li><a href="http://baidu.com/?a=8">标签5标签标签标签</a></li>
+    <li><a href="http://baidu.com/?a=9">标签5标签</a></li>
+    <li><a href="http://baidu.com/?a=10">标签标签标签5</a></li>
+    <li><a href="http://baidu.com/?a=11">标签标签标签5</a></li>
+    <li><a href="http://baidu.com/?a=12">标签标签标签5</a></li>
+    <li><a href="http://baidu.com/?a=13">标签标签标签5</a></li>
+    <li><a href="http://baidu.com/?a=14">标签标签标签5</a></li>
 </ul>
 <div class="container"></div>
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../dist/g-iframe-man.js" exports="Man"></script>
+<script src="../dist/g-iframe-man.js" exports="IframeMan"></script>
 <script>
-    var man = new Man({
+    var man = new IframeMan({
         $container: $('.container')
     });
     //打开菜单
@@ -38,7 +54,10 @@
             url: $item.attr('href')
         });
         return false;
-    })
+    });
+    //添加退出按钮
+    man.$html.find('.gim-tool-bar-right').append('<div style="padding:0;width:60px;"><a href="login.html" style="color:#999"><i class="fa fa fa-sign-out"></i> 退出</a></div>');
+    man.show();
 </script>
 </body>
 </html>

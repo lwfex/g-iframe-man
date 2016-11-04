@@ -101,7 +101,7 @@ module.exports = function (options) {
                 resizeTabBarWidth();
             }
         }
-        if ($item) {
+        if ($item && $item.length) {
             //自动定位tab页
             _this.$tabContainer.css("margin-top", -($item.position().top) || 0);
         }
@@ -156,5 +156,7 @@ module.exports = function (options) {
         _this.whetherHideTabRoll(_this.$tabContainer.find('.active'));
     });
 
-    resizeTabBarWidth();
+    _this.show = function () {
+        resizeTabBarWidth();
+    }
 };

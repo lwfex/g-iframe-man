@@ -8,8 +8,14 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.less$/, loader: 'style-loader!css-loader!less-loader?sourceMap'}, // use ! to chain loaders
-            {test: /\.css$/, loader: 'style-loader!css-loader?sourceMap'},
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('css-loader!less-loader?sourceMap', {publicPath: './'})
+            }, // use ! to chain loaders
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader?sourceMap', {publicPath: './'})
+            },
             {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'} // inline base64 URLs for <=8k images, direct URLs for the rest
         ]
     },
