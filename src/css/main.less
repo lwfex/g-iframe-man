@@ -1,14 +1,16 @@
 //标签页激活颜色
-@color-1:#2f4050;
+@color-1: #2f4050;
 //边框颜色
-@color-2:#dedede;
+@color-2: #dedede;
 //hover颜色
-@color-3:lighten(@color-2,8%);
+@color-3: lighten(@color-2, 8%);
 //标签栏字体颜色
 @color-4: #999;
 
 .g-iframe-man {
-  box-sizing: border-box;
+  &, * {
+    box-sizing: border-box;
+  }
   a {
     text-decoration: none;
   }
@@ -20,39 +22,39 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 40px;
+    height: 42px;
     width: 100%;
     line-height: 40px;
     border-bottom: 2px solid @color-1;
     overflow: hidden;
     font-size: 13px;
-    color:@color-4;
+    color: @color-4;
     //标签页
     .gim-tab-container {
-      position:relative;
+      position: relative;
       transition: margin-top 0.3s;
       a {
         display: inline-block;
         padding: 0 15px;
         border: 1px solid @color-2;
         border-width: 0 1px 0 1px;
-        color:@color-4;
+        color: @color-4;
         + a {
           margin-left: -1px;
         }
         &:hover {
-          background:@color-3;
+          background: @color-3;
         }
         &.active {
           background: @color-1;
-          border-color:@color-1;
+          border-color: @color-1;
           color: white;
         }
-        i{
-          padding:6px;
-          margin:-6px -10px -6px -6px;
-          &:hover{
-            color:red;
+        i {
+          padding: 6px;
+          margin: -6px -10px -6px -6px;
+          &:hover {
+            color: red;
           }
         }
       }
@@ -68,7 +70,7 @@
         border: 1px solid @color-2;
         border-width: 0 1px 0 1px;
         cursor: pointer;
-        text-align:center;
+        text-align: center;
         + div {
           margin-left: -1px;
         }
@@ -76,7 +78,7 @@
       .gim-tab-roll {
         display: none;
         padding: 0;
-        width:20px;
+        width: 20px;
         .gim-prev, .gim-next {
           display: block;
           height: 20px;
@@ -89,7 +91,7 @@
       }
       //刷新页面按钮
       .gim-btn-refresh {
-        width:40px;
+        width: 40px;
       }
     }
   }
