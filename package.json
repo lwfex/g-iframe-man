@@ -1,0 +1,20 @@
+{
+  "name": "g-iframe-man",
+  "version": "1.0.0",
+  "description": "标签页风格的后台窗口管理器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "max",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  }
+}

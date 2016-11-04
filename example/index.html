@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>g-iframe-man 标签页风格的后台窗口管理器</title>
+    <link href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.css" rel="stylesheet"/>
+    <style>
+        .menu {
+            width: 200px;
+            float: left;
+        }
+
+        .container {
+            margin: 0 0 0 200px;
+        }
+    </style>
+</head>
+<body>
+<ul class="menu">
+    <li><a href="http://baidu.com/?a=1">百度1</a></li>
+    <li><a href="http://baidu.com/?a=2">百度2</a></li>
+    <li><a href="http://baidu.com/?a=3">百度3</a></li>
+    <li><a href="http://baidu.com/?a=4">百度4</a></li>
+    <li><a href="http://baidu.com/?a=5">百度5</a></li>
+</ul>
+<div class="container"></div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../dist/g-iframe-man.js" exports="Man"></script>
+<script>
+    var man = new Man({
+        $container: $('.container')
+    });
+    //打开菜单
+    $('.menu').on('click', 'a', function () {
+        var $item = $(this);
+        man.open({
+            title: $item.text(),
+            url: $item.attr('href')
+        });
+        return false;
+    })
+</script>
+</body>
+</html>
