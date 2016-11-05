@@ -13,32 +13,21 @@
         }
 
         .menu {
-            width: 200px;
+            width: 120px;
+            text-align: center;
+            padding-top: 31px;
             float: left;
         }
 
         .container {
-            margin: 0 0 0 200px;
+            margin: 0 0 0 120px;
         }
     </style>
 </head>
 <body>
-<ul class="menu">
-    <li><a href="http://baidu.com/?a=1">标签1标签1标签1标签</a></li>
-    <li><a href="http://baidu.com/?a=2">标签标签2标签</a></li>
-    <li><a href="http://baidu.com/?a=3">标签3标签</a></li>
-    <li><a href="http://baidu.com/?a=4">标签标签度4</a></li>
-    <li><a href="http://baidu.com/?a=5">标签5标签</a></li>
-    <li><a href="http://baidu.com/?a=6">标签3标签3标签标签</a></li>
-    <li><a href="http://baidu.com/?a=7">标签标签4</a></li>
-    <li><a href="http://baidu.com/?a=8">标签5标签标签标签</a></li>
-    <li><a href="http://baidu.com/?a=9">标签5标签</a></li>
-    <li><a href="http://baidu.com/?a=10">标签标签标签5</a></li>
-    <li><a href="http://baidu.com/?a=11">标签标签标签5</a></li>
-    <li><a href="http://baidu.com/?a=12">标签标签标签5</a></li>
-    <li><a href="http://baidu.com/?a=13">标签标签标签5</a></li>
-    <li><a href="http://baidu.com/?a=14">标签标签标签5</a></li>
-</ul>
+<div class="menu">
+    <button>打开新标签页</button>
+</div>
 <div class="container"></div>
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../dist/g-iframe-man.js" exports="IframeMan"></script>
@@ -47,13 +36,24 @@
         $container: $('.container')
     });
     //打开菜单
-    $('.menu').on('click', 'a', function () {
-        var $item = $(this);
+    var words = "停车坐爱枫林晚霜叶红于二月花";
+    var url = ["http://gwchina.cn", "http://qq.com", "http://baidu.com", "http://taobao.com"];
+    $('.menu').on('click', 'button', function () {
+        function getTitle() {
+            var count = Math.round(Math.random() * 100 % 10);
+            count = Math.min(count, 7);
+            count = Math.max(count, 3);
+            var title = '';
+            for (var i = 0; i < count; i++) {
+                title += words[Math.floor((Math.random() * 50) % words.length)];
+            }
+            return title;
+        }
+
         man.open({
-            title: $item.text(),
-            url: $item.attr('href')
+            title: getTitle(),
+            url: url[Math.floor((Math.random() * 10) % 4)] + '?=t' + (new Date()).getTime()
         });
-        return false;
     });
     //添加退出按钮
     man.$html.find('.gim-tool-bar-right').append('<div style="padding:0;width:60px;"><a href="login.html" style="color:#999"><i class="fa fa fa-sign-out"></i> 退出</a></div>');
