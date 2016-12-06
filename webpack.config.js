@@ -1,10 +1,10 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-    entry: './index.js',
+    entry: './index.dist.js',
     output: {
         path: './dist/',
-        filename: 'g-iframe-man.js'
+        filename: 'g-iframe-man.min.js'
     },
     module: {
         loaders: [
@@ -20,8 +20,10 @@ module.exports = {
         ]
     },
     plugins: [
+        //启用压缩
+        new webpack.optimize.UglifyJsPlugin(),
         //分离出CSS
-        new ExtractTextPlugin("g-iframe-man.css", {
+        new ExtractTextPlugin("g-iframe-man.min.css", {
             allChunks: true
         })
     ]
