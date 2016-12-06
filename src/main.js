@@ -9,6 +9,7 @@ module.exports = function (options) {
     };
     $.extend(true, _this.options, options);
 
+    require('./css/main.less');
     var tpl = require('raw!./main.html');
     _this.$html = $(tpl).appendTo(_this.options.$container);
     _this.$tabContainer = _this.$html.find('.gim-tab-container');
